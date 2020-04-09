@@ -19,6 +19,7 @@ export default function MaterialSelect(props) {
         <FormControl className="material-control">
             <InputLabel>{props.label}</InputLabel>
             <Select value={selected} onChange={handleChange}>
+                <MenuItem key={props.default.value} value={props.default.value}>{props.default.display}</MenuItem>
                 {items.map(item => (<MenuItem key={item.name} value={item.name}>{item.name}</MenuItem>))}
             </Select>
         </FormControl>
