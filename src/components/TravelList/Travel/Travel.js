@@ -62,7 +62,7 @@ export default function Travel(props) {
                 </Grid>
                 <Grid container spacing={4}>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
-                        <MaterialSelect id="sltPlaneta" items={planets} default={{ value: "Planeta Desconhecido", display: "Planeta Desconhecido" }} onChange={changePlanet} value={planet} label="Planeta" />
+                        <MaterialSelect id="sltPlaneta" items={planets} default={{ value: "Planeta Desconhecido", display: "Planeta Desconhecido" }} onChange={changePlanet} travel={props.travel} label="Planeta" />
                     </Grid>
                 </Grid>
             </Grid>
