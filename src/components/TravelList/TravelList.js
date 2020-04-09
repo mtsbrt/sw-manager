@@ -19,8 +19,8 @@ export default function TravelList(props) {
         description: '',
         planet: ''
     }]);
-
     const [error, setError] = useState('');
+    const [openSnack, setOpenSnack] = useState(false);
 
     const deleteTravel = (travel) => {
         if (travels.length > 1) {
@@ -28,6 +28,7 @@ export default function TravelList(props) {
             setTravels(newList);
         } else {
             setError('Não é possível deletar o último registro de viagem.')
+            setOpenSnack(true);
         }
     }
 
@@ -44,6 +45,7 @@ export default function TravelList(props) {
         }
 
         setError('');
+        setOpenSnack(false);
     }
 
     const changeTravel = (travel, event) => {
@@ -53,12 +55,12 @@ export default function TravelList(props) {
     const renderList = (items) => {
         return items.map((travel, index) => {
             return (
-                <div>
-                    <ListItem key={index}>
+                <div key={index}>
+                    <ListItem>
                         <Travel travel={travel} onDelete={deleteTravel} onChange={changeTravel} />
+                        {index + 1 < items.length &&
+                            <Divider />}
                     </ListItem>
-                    {index + 1 < items.length &&
-                        <Divider />}
                 </div>
             );
         })
@@ -87,7 +89,7 @@ export default function TravelList(props) {
                     </IconButton>
                 </CardActions>
             </Card>
-            <Snackbar open={error} autoHideDuration={2000} onClose={closeError}>
+            <Snackbar open={openSnack} autoHideDuration={2000} onClose={closeError}>
                 <Alert severity="error">
                     {error}
                 </Alert>
