@@ -56,7 +56,7 @@ export default function Travel(props) {
                 <Grid container spacing={4}>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                         <FormControl style={styles.formControlStyle}>
-                            <TextField id="txtDescricao" value={description} onChange={changeDescription} label="Descrição" />
+                            <TextField id="txtDescricao" value={props.travel.description} onChange={changeDescription} label="Descrição" />
                         </FormControl>
                     </Grid>
                 </Grid>
